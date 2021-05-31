@@ -19,15 +19,6 @@ export const BeersProvider = ({ children }) => {
     loadBeers();
   }, []);
 
-  //   const addToCart = (item) => {
-  //     setCart([...cart, item]);
-  //   };
-
-  //   const removeFromCart = (item) => {
-  //     const newCart = cart.filter((itemOnCart) => itemOnCart.name !== item.name);
-  //     setCart(newCart);
-  //   };
-
   return (
     <BeersContext.Provider value={{ beers }}>{children}</BeersContext.Provider>
   );
