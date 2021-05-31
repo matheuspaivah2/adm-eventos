@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 export const ListaFormaturaContext = createContext([]);
 
-export const ListaFormaturaProvider = ({ childern }) => {
+export const ListaFormaturaProvider = ({ children }) => {
   const [formatura, setFormatura] = useState([]);
 
   const addToFormatura = (item) => {
@@ -20,9 +20,9 @@ export const ListaFormaturaProvider = ({ childern }) => {
     <ListaFormaturaContext.Provider
       value={{ formatura, addToFormatura, removeFromFormatura }}
     >
-      {childern}
+      {children}
     </ListaFormaturaContext.Provider>
   );
 };
 
-export const useFormatura = () => useContext(ListaFormaturaContext);
+// export const useFormatura = () => useContext(ListaFormaturaContext);

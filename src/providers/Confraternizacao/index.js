@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 export const ListaConfraternizacaoContext = createContext([]);
 
-export const ListaConfraternizacaoProvider = ({ childern }) => {
+export const ListaConfraternizacaoProvider = ({ children }) => {
   const [confraternizacao, setConfraternizacao] = useState([]);
 
   const addToConfraternizacao = (item) => {
@@ -24,9 +24,9 @@ export const ListaConfraternizacaoProvider = ({ childern }) => {
         removeFromConfraternizacao,
       }}
     >
-      {childern}
+      {children}
     </ListaConfraternizacaoContext.Provider>
   );
 };
-export const useConfraternizacao = () =>
-  useContext(ListaConfraternizacaoContext);
+// export const useConfraternizacao = () =>
+//   useContext(ListaConfraternizacaoContext);

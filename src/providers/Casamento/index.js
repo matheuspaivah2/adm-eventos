@@ -1,8 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const ListaCasamentoContext = createContext([]);
 
-export const ListaCasamentoProvider = ({ childern }) => {
+export const ListaCasamentoProvider = ({ children }) => {
   const [casamento, setCasamento] = useState([]);
 
   const addToCasamento = (item) => {
@@ -20,9 +20,7 @@ export const ListaCasamentoProvider = ({ childern }) => {
     <ListaCasamentoContext.Provider
       value={{ casamento, addToCasamento, removeFromCasamento }}
     >
-      {childern}
+      {children}
     </ListaCasamentoContext.Provider>
   );
 };
-
-export const useCasamento = () => useContext(ListaCasamentoContext);

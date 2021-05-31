@@ -1,19 +1,17 @@
-import { BeersProvider } from "./beers";
-import { ListaCasamentoProvider } from "./casamento";
-import { ListFormaturaProvider } from "./formatura";
-import { ListaConfraternizacaoProvider } from "./confraternizacao";
+import { BeersProvider } from "./Beers";
+import { ListaCasamentoProvider } from "./Casamento";
+import { ListaFormaturaProvider } from "./Formatura";
+import { ListaConfraternizacaoProvider } from "./Confraternizacao";
 
 const Providers = ({ children }) => {
   return (
-    <BeersProvider>
-      <ListFormaturaProvider>
-        <ListaCasamentoProvider>
-          <ListaConfraternizacaoProvider>
-            {children}
-          </ListaConfraternizacaoProvider>
-        </ListaCasamentoProvider>
-      </ListFormaturaProvider>
-    </BeersProvider>
+    <ListaCasamentoProvider>
+      <ListaConfraternizacaoProvider>
+        <ListaFormaturaProvider>
+          <BeersProvider>{children}</BeersProvider>
+        </ListaFormaturaProvider>
+      </ListaConfraternizacaoProvider>
+    </ListaCasamentoProvider>
   );
 };
 
