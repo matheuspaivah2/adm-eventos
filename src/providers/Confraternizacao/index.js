@@ -28,5 +28,5 @@ export const ListaConfraternizacaoProvider = ({ children }) => {
     </ListaConfraternizacaoContext.Provider>
   );
 };
-// export const useConfraternizacao = () =>
-//   useContext(ListaConfraternizacaoContext);
+export const useConfraternizacao = () =>
+  useContext(ListaConfraternizacaoContext);

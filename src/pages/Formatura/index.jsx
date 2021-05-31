@@ -1,5 +1,10 @@
+import ProductList from "../../components/ProductsList";
 const Formatura = () => {
-  return <div>Formatura</div>;
+  return (
+    <div>
+      <ProductList type="formatura" addOrRemove={false} />
+    </div>
+  );
 };
 
 export default Formatura;

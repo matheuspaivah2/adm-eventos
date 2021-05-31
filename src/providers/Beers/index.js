@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const BeersContext = createContext([]);
 
@@ -23,3 +23,5 @@ export const BeersProvider = ({ children }) => {
     <BeersContext.Provider value={{ beers }}>{children}</BeersContext.Provider>
   );
 };
+
+export const useBeers = () => useContext(BeersContext);

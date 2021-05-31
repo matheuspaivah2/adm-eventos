@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const ListaCasamentoContext = createContext([]);
 
@@ -24,3 +24,5 @@ export const ListaCasamentoProvider = ({ children }) => {
     </ListaCasamentoContext.Provider>
   );
 };
+
+export const useCasamento = () => useContext(ListaCasamentoContext);

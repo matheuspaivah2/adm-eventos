@@ -25,4 +25,4 @@ export const ListaFormaturaProvider = ({ children }) => {
   );
 };
 
-// export const useFormatura = () => useContext(ListaFormaturaContext);
+export const useFormatura = () => useContext(ListaFormaturaContext);
