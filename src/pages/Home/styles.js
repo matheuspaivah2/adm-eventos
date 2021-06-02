@@ -8,6 +8,6 @@ export const Container = styled.div`
   h1 {
     align-self: center;
     margin-top: 30px;
-    color: #091523;
+    color: white;
   }
 `;

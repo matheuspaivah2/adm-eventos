@@ -30,7 +30,6 @@ const ProductsList = ({ type, addOrRemove }) => {
       default:
         break;
     }
-    console.log("montou");
   });
 
   return (

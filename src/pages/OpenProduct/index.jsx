@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useBeers } from "../../providers/Beers";
 import CardBeer from "../../components/CardBeer";
 const OpenProduct = () => {
