@@ -5,12 +5,7 @@ import { useFormatura } from "../../providers/Formatura";
 import { useConfraternizacao } from "../../providers/Confraternizacao";
 import Product from "../Product";
 import { useEffect, useState } from "react";
-const ProductsList = ({
-  setShowProduct,
-  setOpenedProduct,
-  type,
-  addOrRemove,
-}) => {
+const ProductsList = ({ type, addOrRemove }) => {
   const { beers } = useBeers();
   const { casamento } = useCasamento();
   const { formatura } = useFormatura();
@@ -35,24 +30,26 @@ const ProductsList = ({
       default:
         break;
     }
+    console.log("montou");
   });
 
   return (
     <>
       <Container>
-        <ul>
-          {listBeers[0] &&
-            listBeers.map((beer) => (
+        {listBeers[0] ? (
+          <ul>
+            {listBeers.map((beer) => (
               <Product
                 key={beer.id}
                 beer={beer}
-                setShowProduct={setShowProduct}
-                setOpenedProduct={setOpenedProduct}
                 addOrRemove={addOrRemove}
                 type={type}
               ></Product>
             ))}
-        </ul>
+          </ul>
+        ) : (
+          <span>Empty List</span>
+        )}
       </Container>
     </>
   );

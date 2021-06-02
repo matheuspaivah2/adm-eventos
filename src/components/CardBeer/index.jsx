@@ -1,42 +1,102 @@
-import { Container, Blackground } from "./styles";
+import { Container, Buttons, Legenda } from "./styles";
 import { useCasamento } from "../../providers/Casamento";
 import { useFormatura } from "../../providers/Formatura";
 import { useConfraternizacao } from "../../providers/Confraternizacao";
-const CardBeer = ({ beer, setShowProduct, setOpenedProduct }) => {
+import { toast } from "react-toastify";
+
+const CardBeer = ({ beer }) => {
   const { image_url, name, first_brewed, description, volume } = beer;
 
-  const { addToCasamento } = useCasamento();
-  const { addToFormatura } = useFormatura();
-  const { addToConfraternizacao } = useConfraternizacao();
+  const { addToCasamento, casamento } = useCasamento();
+  const { addToFormatura, formatura } = useFormatura();
+  const { addToConfraternizacao, confraternizacao } = useConfraternizacao();
 
-  const handleClose = () => {
-    setOpenedProduct([]);
-    setShowProduct(false);
+  const handleAddToCasamento = () => {
+    const haveBeer = casamento.filter((item) => item === beer);
+    if (haveBeer[0] === undefined) {
+      addToCasamento(beer);
+      toast.info(`🍺 Beer added to wedding list`, {
+        autoClose: 2000,
+      });
+    } else {
+      toast.error("Beer is already registered on this list", {
+        autoClose: 2000,
+      });
+    }
+  };
+
+  const handleAddToFormatura = () => {
+    const haveBeer = formatura.filter((item) => item === beer);
+    if (haveBeer[0] === undefined) {
+      addToFormatura(beer);
+      toast.info(`🍺 Beer added to graduation list`, {
+        autoClose: 2000,
+      });
+    } else {
+      toast.error("Beer is already registered on this list", {
+        autoClose: 2000,
+      });
+    }
+  };
+
+  const handleAddToConfraternizacao = () => {
+    const haveBeer = confraternizacao.filter((item) => item === beer);
+    if (haveBeer[0] === undefined) {
+      addToConfraternizacao(beer);
+      toast.info(`🍺 Beer added to confraternization list`, {
+        autoClose: 2000,
+      });
+    } else {
+      toast.error("Beer is already registered on this list", {
+        autoClose: 2000,
+      });
+    }
   };
   return (
-    <Blackground>
+    <>
       <Container>
+        <figure>
+          <img src={image_url} alt="beer" />
+        </figure>
+
         <div>
-          <button onClick={handleClose}>Close</button>
-          <figure>
-            <img src={image_url} alt="beer" />
-          </figure>
           <h3>{name}</h3>
           <p>{description}</p>
-          <span>{first_brewed}</span>
+          <span>Since: {first_brewed || "unknown"}</span>
           <span>
-            {volume.value} {volume.unit}
+            {volume.unit}: {volume.value}
           </span>
-          <div className="buttons">
-            <button onClick={() => addToCasamento(beer)}>ADD CASAMENTO</button>
-            <button onClick={() => addToFormatura(beer)}>ADD FORMATURA</button>
-            <button onClick={() => addToConfraternizacao(beer)}>
-              ADD CONFRATERNIZAÇÃO
-            </button>
-          </div>
+          <span>IBU: {beer.ibu || "unknown"}</span>
+          <span>ABV: {beer.abv || "unknown"}%</span>
+          <span>EBC: {beer.ebc || "unknown"}</span>
+          <span>PH: {beer.ph || "unknown"}</span>
         </div>
       </Container>
-    </Blackground>
+      <Legenda>Add to some list</Legenda>
+      <Buttons>
+        <button
+          onClick={() => {
+            handleAddToCasamento();
+          }}
+        >
+          Wedding
+        </button>
+        <button
+          onClick={() => {
+            handleAddToFormatura();
+          }}
+        >
+          Graduation
+        </button>
+        <button
+          onClick={() => {
+            handleAddToConfraternizacao();
+          }}
+        >
+          Confraternization
+        </button>
+      </Buttons>
+    </>
   );
 };
 

@@ -1,9 +1,9 @@
-import { AppBar, Toolbar, MenuItem } from "@material-ui/core";
+import { AppBar, Toolbar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { Logo } from "./styles";
+import { Logo, ButtonMenu, Hamburg, Vl, Container } from "./styles";
 import { makeStyles } from "@material-ui/core/styles";
 
-const Menu = ({ isValidated, setIsValidated }) => {
+const Menu = () => {
   const history = useHistory();
 
   const sendTo = (path) => {
@@ -11,22 +11,16 @@ const Menu = ({ isValidated, setIsValidated }) => {
   };
 
   const useStyles = makeStyles((theme) => ({
-    bt__Right: {
-      marginLeft: "auto",
-    },
     toolbar: {
       backgroundColor: "#130707",
-      width: "65%",
-
-      boxSizing: "borderbox",
+      width: "90%",
+      height: "5vh",
       margin: "0 auto",
+      maxWidth: "1500px",
     },
     appbar: {
       backgroundColor: "#130707",
       boxSizing: "borderbox",
-    },
-    bt: {
-      color: "#F66A98",
     },
   }));
 
@@ -42,14 +36,19 @@ const Menu = ({ isValidated, setIsValidated }) => {
         <Logo htmlFor="" onClick={() => sendTo("/")}>
           TheBeers
         </Logo>
-        <MenuItem onClick={() => sendTo("/")} className={classes.bt__Right}>
-          Catálogo
-        </MenuItem>
-        <MenuItem onClick={() => sendTo("/casamento")}>Casamento</MenuItem>
-        <MenuItem onClick={() => sendTo("/formatura")}>Formatura</MenuItem>
-        <MenuItem onClick={() => sendTo("/confraternizacao")}>
-          Confraternização
-        </MenuItem>
+        <Container>
+          <Hamburg />
+
+          <ButtonMenu onClick={() => sendTo("/")}>Catalog</ButtonMenu>
+          <Vl />
+          <ButtonMenu onClick={() => sendTo("/casamento")}>Wedding</ButtonMenu>
+          <ButtonMenu onClick={() => sendTo("/formatura")}>
+            Graduation
+          </ButtonMenu>
+          <ButtonMenu onClick={() => sendTo("/confraternizacao")}>
+            Confraternization
+          </ButtonMenu>
+        </Container>
       </Toolbar>
     </AppBar>
   );

@@ -6,9 +6,20 @@ export const Container = styled.li`
   justify-content: flex-start;
   align-items: center;
   width: 300px;
-  height: 570px;
+  height: 400px;
   row-gap: 10px;
   cursor: pointer;
+  height: auto;
+
+  @media (min-width: 768px) {
+    height: ${(props) => {
+      if (props.btcolor === true) {
+        return "400px";
+      } else {
+        return "500px";
+      }
+    }};
+  }
 
   figure {
     width: 150px;
@@ -20,7 +31,9 @@ export const Container = styled.li`
     object-fit: contain;
   }
   h3 {
-    color: #4dffe3;
+    color: #88e0fe;
+    font-size: 1.8rem;
+    text-align: center;
   }
   span {
     font-size: 1rem;
@@ -28,35 +41,43 @@ export const Container = styled.li`
   }
   p {
     font-size: 0.9rem;
-    width: 300px;
+    width: 90%;
+    text-align: center;
+    @media (min-width: 768px) {
+      width: 300px;
+    }
   }
   button {
-    border: 2px solid black;
+    border: none;
     border-radius: 4px;
     padding: 8px;
     width: 80%;
     font-size: 1rem;
     margin-top: auto;
     background-color: #4dffe3;
-    color: black;
+    color: white;
     font-weight: bolder;
     cursor: pointer;
+    border: 1px solid black;
     color: ${(props) => {
-      console.log(props.btcolor);
       if (props.btcolor === true) {
-        return "black";
+        return "white";
       } else {
         return "white";
       }
     }};
 
     background-color: ${(props) => {
-      console.log(props.btcolor);
       if (props.btcolor === true) {
-        return "#4dffe3";
+        return "#080d0c";
       } else {
-        return "#bc0000";
+        return "#091523";
       }
     }};
+
+    &:hover {
+      border: 1px solid #d1184f;
+      color: #d1184f;
+    }
   }
 `;

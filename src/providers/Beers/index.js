@@ -9,7 +9,6 @@ export const BeersProvider = ({ children }) => {
   const loadBeers = () => {
     axios("https://api.punkapi.com/v2/beers")
       .then((res) => {
-        console.log(res.data);
         setBeers(res.data);
       })
       .catch((err) => console.log(err));

@@ -15,4 +15,10 @@ export const Container = styled.div`
     column-gap: 20px;
     row-gap: 100px;
   }
+  span {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-size: 1.5rem;
+  }
 `;

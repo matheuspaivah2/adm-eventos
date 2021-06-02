@@ -1,26 +1,20 @@
-import { useState } from "react";
 import ProductList from "../../components/ProductsList";
 import { Container } from "./styles";
-import CardBeer from "../../components/CardBeer";
-const Home = () => {
-  const [showProduct, setShowProduct] = useState(false);
-  const [openedProduct, setOpenedProduct] = useState([]);
+import Loading from "../../components/Loading";
+import { useBeers } from "../../providers/Beers";
 
+const Home = () => {
+  const { beers } = useBeers();
   return (
     <Container>
-      {showProduct && (
-        <CardBeer
-          beer={openedProduct}
-          setShowProduct={setShowProduct}
-          setOpenedProduct={setOpenedProduct}
-        />
+      {beers ? (
+        <>
+          <h1>Catalog</h1>
+          <ProductList type={"beers"} addOrRemove={true}></ProductList>
+        </>
+      ) : (
+        <Loading />
       )}
-      <ProductList
-        setShowProduct={setShowProduct}
-        setOpenedProduct={setOpenedProduct}
-        type={"beers"}
-        addOrRemove={true}
-      ></ProductList>
     </Container>
   );
 };
